@@ -38,5 +38,8 @@ module GeoDemo
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Configure heroku.rb addon settings
+    config.heroku_salt = '1p3O0Wm5p3d1kkZ1'
   end
 end

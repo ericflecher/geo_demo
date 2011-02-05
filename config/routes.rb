@@ -1,4 +1,11 @@
 GeoDemo::Application.routes.draw do
+
+  devise_for :users
+
+  namespace "heroku" do
+    resources :resources, :only => [:show, :update, :create, :destroy]
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

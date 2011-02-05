@@ -1,0 +1,10 @@
+{
+  "id": "abstractidentity",
+  "api": {
+    "config_vars": [ "ABSTRACTIDENTITY_USERNAME", "ABSTRACTIDENTITY_PASSWORD" ],
+    "password": "4wcRVpdZtcfyGTEJ",
+    "sso_salt": "1p3O0Wm5p3d1kkZ1",
+    "production": "https://abstractidentity.com/",
+    "test": "http://localhost:3000/"
+  }
+}
