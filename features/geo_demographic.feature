@@ -3,6 +3,6 @@ Feature: Find Geo-Demographic Information
   Users should be able to retrieve demographic information
 
   Scenario: Find by Zip Code
-    Given a zip_code
+    Given '44017'
     When I restfully request geo-demographic data
     Then I should receive geo-demographic data

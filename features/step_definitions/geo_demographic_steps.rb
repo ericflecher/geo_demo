@@ -1,11 +1,12 @@
 
 
-Given /^a zip_code$/ do
-  44017
+Given /^'(\d+)'$/ do |arg1|
+  puts arg1
+  arg1
 end
 
 When /^I restfully request geo\-demographic data$/ do
-  get '/geo_demo'
+
 end
 
 

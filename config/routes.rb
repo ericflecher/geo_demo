@@ -1,6 +1,9 @@
 GeoDemo::Application.routes.draw do
 
+  root :to => "home#index"
+
   devise_for :users
+  resources :users, :only => :show
 
   namespace "heroku" do
     resources :resources, :only => [:show, :update, :create, :destroy]
@@ -54,7 +57,7 @@ GeoDemo::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+  # just remember to delete public/index.html.old.
   # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
