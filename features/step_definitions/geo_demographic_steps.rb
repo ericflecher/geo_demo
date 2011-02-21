@@ -6,7 +6,6 @@ Given /^'(\d+)'$/ do |arg1|
 end
 
 When /^I restfully request geo\-demographic data$/ do
-
 end
 
 

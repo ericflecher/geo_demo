@@ -2,22 +2,24 @@ source 'http://rubygems.org'
 
 gem 'kensa'
 gem 'haml'
-gem 'rails', '3.0.4'
+gem 'rails'
+gem 'builder'
 
 # Bundle gems needed for Mongoid
-gem "mongoid", "2.0.0.rc.7"
+gem "mongoid", ">=2.0.0.rc.7"
 gem "bson_ext", "1.2.2"
 
 # Bundle gem needed for Devise
-gem "devise", "1.2.rc"
+gem "devise", ">=1.2.rc"
 
 group :development do
   gem 'ruby-debug19'
 end
 
-#group :test do
+group :test do
   gem 'database_cleaner'
   gem 'factory_girl'
+  #gem 'mongoid-cucumber'
   gem 'cucumber-rails'
   gem 'cucumber'
   gem 'capybara'
@@ -26,8 +28,8 @@ end
   gem 'rspec'
   gem 'nokogiri'
   gem 'firewatir'
-  gem 'safariwatir'
-#end
+  #gem 'safariwatir'
+end
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
