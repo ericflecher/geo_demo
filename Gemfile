@@ -17,6 +17,7 @@ group :development do
 end
 
 group :test do
+  gem 'open4'
   gem 'database_cleaner'
   gem 'factory_girl'
   #gem 'mongoid-cucumber'

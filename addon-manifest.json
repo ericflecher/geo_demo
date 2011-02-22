@@ -5,6 +5,6 @@
     "password": "4wcRVpdZtcfyGTEJ",
     "sso_salt": "1p3O0Wm5p3d1kkZ1",
     "production": "https://abstractidentity.com/",
-    "test": "http://localhost:3000/"
+    "test": "http://127.0.0.1/"
   }
 }

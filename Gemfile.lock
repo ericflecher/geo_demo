@@ -108,6 +108,7 @@ GEM
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.4)
+    open4 (1.0.1)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -197,6 +198,7 @@ DEPENDENCIES
   kensa
   mongoid (>= 2.0.0.rc.7)
   nokogiri
+  open4
   rails
   rspec
   rspec-rails
