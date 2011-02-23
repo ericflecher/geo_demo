@@ -19,6 +19,7 @@ require 'heroku/kensa/http'
         if(meth == :post)
           # WTF am I supposed to do this far down??? DJ
           #post('blah', 'blah', 'blah')
+          puts "your mom"
         end
   #      body = RestClient::Resource.new(url, user, pass)[path].send(
   #        meth,

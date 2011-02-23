@@ -16,6 +16,7 @@ group :development do
   gem 'ruby-debug19'
 end
 
+
 group :test do
   gem 'open4'
   gem 'database_cleaner'
@@ -28,8 +29,14 @@ group :test do
   gem 'spork'
   gem 'rspec'
   gem 'nokogiri'
-  gem 'firewatir'
-  #gem 'safariwatir'
+
+  case RUBY_PLATFORM
+  when /darwin/
+      gem 'safariwatir'
+  when /linux/
+    gem 'firewatir'
+  end
+  
 end
 
 # Bundle gems for the local environment. Make sure to

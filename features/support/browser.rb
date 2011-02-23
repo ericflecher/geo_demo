@@ -1,4 +1,4 @@
-if ENV['FIREWATIR']
+if ENV['FIREWATIR'] or RUBY_PLATFORM =~ /linux/ then
   require 'firewatir'
   Browser = FireWatir::Firefox
 else
