@@ -4,26 +4,34 @@ require 'heroku/kensa/http'
 
     def get(path, params={})
       path = "#{path}?" + params.map { |k, v| "#{k}=#{v}" }.join("&") unless params.empty?
-      @data[:session].get path
-      [@data[:session].response.code.to_i, @data[:session].response.body]
+      @data[:session].get(path)
+      get_code_and_body
     end
 
     def post(credentials, path, payload=nil)
-      @data[:session].post(*get_request_args(credentials, path, payload))
-      [@data[:session].response.code.to_i, @data[:session].response.body]
+      request_with_method(:post, get_request_args(credentials, path, payload))
+      get_code_and_body
     end
 
     def put(credentials, path, payload=nil)
-      @data[:session].put(*get_request_args(credentials, path, payload))
-      [@data[:session].response.code.to_i, @data[:session].response.body]
+      request_with_method(:put, get_request_args(credentials, path, payload))
+      get_code_and_body
     end
 
     def delete(credentials, path, payload=nil)
-      @data[:session].delete(*get_request_args(credentials, path, payload))
-      [@data[:session].response.code.to_i, @data[:session].response.body]
+      request_with_method(:delete, get_request_args(credentials, path, payload))
+      get_code_and_body
     end
 
     protected
+
+    def get_code_and_body
+      [@data[:session].response.code.to_i, @data[:session].response.body]
+    end
+
+    def request_with_method(method, params)
+      @data[:session].send(method, *params)
+    end
 
     def get_request_args(credentials, path, payload=nil)
       user, password = credentials

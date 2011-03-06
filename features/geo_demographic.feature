@@ -1,6 +1,6 @@
 Feature: Find Geo-Demographic Information
   In order to easily supply demographic information to our api users
-  Users should be able to retrieve demographic information
+  Users should be able to retrieve demographic information easily
 
   Scenario: Find by Zip Code
     Given '44017'
