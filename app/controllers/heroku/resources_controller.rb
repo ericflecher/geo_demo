@@ -8,7 +8,7 @@ class Heroku::ResourcesController < ApplicationController
   def create
     password = User.generate_token('encrypted_password')[0..19]
     user = User.create!(:name => params[:heroku_id],
-                        :email => params[:heroku_id],
+                        :email  => params[:heroku_id],
                         :password => password,
                         :password_confirmation => password)
     render :json => {:id => user.id,
