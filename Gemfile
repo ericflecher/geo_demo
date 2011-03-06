@@ -32,7 +32,7 @@ group :test do
 
   case RUBY_PLATFORM
   when /darwin/
-      gem 'safariwatir'
+#      gem 'safariwatir'
   when /linux/
     gem 'firewatir'
   end
