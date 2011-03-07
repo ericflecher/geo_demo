@@ -5,4 +5,6 @@ describe Plan do
     @plan = Plan.create
     @plan.should respond_to :type
   end
+
+  it "should have a free and premium type"
 end
