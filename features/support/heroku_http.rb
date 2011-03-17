@@ -1,4 +1,5 @@
 require 'heroku/kensa/http'
+require 'heroku/kensa/client'
 
   Heroku::Kensa::HTTP.module_eval do
 
@@ -35,9 +36,9 @@ require 'heroku/kensa/http'
 
     def get_request_args(credentials, path, payload=nil)
       user, password = credentials
-      [path, get_args(payload)[0],
-      {"CONTENT_TYPE" => "application/json",
-       "HTTP_AUTHORIZATION" =>
+        [path, payload.nil? ? nil : get_args(payload)[0],
+         {"CONTENT_TYPE" => "application/json",
+         "HTTP_AUTHORIZATION" =>
            ActionController::HttpAuthentication::Basic.encode_credentials(user, password)}]
     end
 
@@ -51,3 +52,24 @@ require 'heroku/kensa/http'
     end
 
   end
+
+  Heroku::Kensa::Client.class_eval do
+
+    def run_check(*args)
+      options = {}
+      options = args.pop if args.last.is_a?(Hash)
+
+      result = true
+      args.each do |klass|
+        screen = Screen.new
+        data   = Yajl::Parser.parse(resolve_manifest)
+        check  = klass.new(data.merge(@options.merge(options)), screen)
+        result & check.call
+        screen.finish
+        exit 1 if !result
+      end
+      result
+    end
+
+  end
+
