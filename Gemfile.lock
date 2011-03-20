@@ -47,6 +47,8 @@ GEM
     childprocess (0.1.7)
       ffi (~> 0.6.3)
     columnize (0.3.2)
+    commonwatir (1.8.0)
+      user-choices
     configuration (1.2.0)
     cucumber (0.10.0)
       builder (>= 2.1.2)
@@ -68,9 +70,13 @@ GEM
     factory_girl (1.3.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    firewatir (1.8.0)
+      commonwatir (= 1.8.0)
     gherkin (2.3.4)
       json (~> 1.4.6)
     haml (3.0.25)
+    hoe (2.9.1)
+      rake (>= 0.8.7)
     i18n (0.5.0)
     json (1.4.6)
     json_pure (1.5.1)
@@ -123,7 +129,6 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rb-appscript (0.6.0)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.5.0)
@@ -150,8 +155,8 @@ GEM
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
-    safariwatir (0.4.0)
-      rb-appscript
+    s4t-utils (1.0.4)
+      hoe (>= 1.3.0)
     selenium-webdriver (0.1.3)
       childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
@@ -163,9 +168,14 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.25)
+    user-choices (1.1.6.1)
+      builder (>= 2.1.2)
+      s4t-utils (>= 1.0.3)
+      xml-simple (>= 1.0.11)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.14)
     xpath (0.1.3)
       nokogiri (~> 1.3)
     yajl-ruby (0.8.1)
@@ -182,6 +192,7 @@ DEPENDENCIES
   database_cleaner
   devise (>= 1.2.rc)
   factory_girl
+  firewatir
   haml
   kensa
   mongoid (>= 2.0.0.rc.7)
@@ -191,5 +202,4 @@ DEPENDENCIES
   rspec
   rspec-rails
   ruby-debug19
-  safariwatir
   spork

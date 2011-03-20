@@ -11,7 +11,8 @@ When /^running the kensa provision "([^"]*)" test$/ do |test_name|
 end
 
 Then /^the test should run with no fails$/ do
-  @client.test.should == true
+  result = @client.test
+  result.should == true
 end
 
 # Deprovisioning
@@ -32,6 +33,11 @@ end
 
 When /^running the kensa deprovision "([^"]*)" test$/ do |test_name|
   @client = get_client([test_name, @user.id])
+end
+
+Then /^the test should run with no fails when deprovisioning$/ do
+  result = @client.test
+  result.should == true
 end
 
 And /^the user should not have a plan associated to them$/ do

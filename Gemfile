@@ -29,13 +29,7 @@ group :test do
   gem 'spork'
   gem 'rspec'
   gem 'nokogiri'
-
-  case RUBY_PLATFORM
-  when /darwin/
-      gem 'safariwatir'
-  when /linux/
-    gem 'firewatir'
-  end
+  gem 'firewatir'
   
 end
 

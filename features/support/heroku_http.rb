@@ -66,7 +66,7 @@ require 'heroku/kensa/client'
         check  = klass.new(data.merge(@options.merge(options)), screen)
         result & check.call
         screen.finish
-        exit 1 if !result
+        #exit 1 if !result
       end
       result
     end
