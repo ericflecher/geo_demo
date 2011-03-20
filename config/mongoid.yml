@@ -1,4 +1,5 @@
 defaults: &defaults
+  allow_dynamic_fields: true
   host: localhost
   # slaves:
   #   - host: slave1.local
