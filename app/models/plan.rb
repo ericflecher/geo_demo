@@ -1,6 +1,6 @@
 class Plan
   include Mongoid::Document
-  referenced_in :user
+  embedded_in :user, :inverse_of => :plan
 
   field :type
 end
