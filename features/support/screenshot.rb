@@ -27,6 +27,6 @@ module Screenshots
     end
   end
 end
-World(Screenshots)
+#World(Screenshots)
 
 

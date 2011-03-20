@@ -7,7 +7,7 @@ gem 'builder'
 
 # Bundle gems needed for Mongoid
 gem "mongoid", ">=2.0.0.rc.7"
-gem "bson_ext", "1.2.2"
+gem "bson_ext", ">=1.2.4"
 
 # Bundle gem needed for Devise
 gem "devise", ">=1.2.rc"
@@ -29,13 +29,8 @@ group :test do
   gem 'spork'
   gem 'rspec'
   gem 'nokogiri'
+  gem 'firewatir'
 
-  case RUBY_PLATFORM
-  when /darwin/
-#      gem 'safariwatir'
-  when /linux/
-    gem 'firewatir'
-  end
   
 end
 
