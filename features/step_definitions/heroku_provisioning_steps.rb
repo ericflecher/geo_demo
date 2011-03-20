@@ -6,7 +6,7 @@ require "heroku/kensa/sso"
 
 
 When /^running the kensa provision test$/ do
-  @client = Heroku::Kensa::Client.new(["provision"], {:filename => "addon-manifest.json"})
+  @client = Heroku::Kensa::Client.new(["provision"], {:filename => "addon-manifest.json", :session => self})
 end
 
 Then /^the test should run with no fails$/ do
