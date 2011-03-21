@@ -34,8 +34,9 @@ class Heroku::ResourcesController < ApplicationController
   def show
     session[:user] = params[:id]
     session[:heroku_sso] = true
-    response.set_cookie('heroku-nav-data', :value => params['nav-data'], :path => '/')
+    cookies["heroku-nav-data"] = {:value => params['nav-data']}
     @heroku_nav = open('http://nav.heroku.com/v1/providers/header').read
+    render :template => 'heroku/resources/show'
   end
 
   def authenticate_basic

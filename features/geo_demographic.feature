@@ -2,21 +2,20 @@ Feature: Find Geo-Demographic Information
   In order to easily supply demographic information to our api users
   Users should be able to retrieve demographic information easily
 
-  Scenario: Find by Zip Code
-    Given '44017'
-    When I restfully request geo-demographic data
+  Scenario: Passing location IP
+    When I execute a request for geo-demographic data based on IP '10.13.135.34'
     Then I should receive geo-demographic data
 
-  Scenario: Find by IP Address
-    Given '10.13.135.34'
-    When I restfully request geo-demographic data
-    Then I should receive geo-demographic data
-
-  Scenario: Account usage increments
-    Given a user a basic account has made X requests
-    When the user issues the next request
-    Then the user is shown a 402 error page
-    And the page has a link to account management
+#  Scenario: Find by IP Address
+#    Given '10.13.135.34'
+#    When I restfully request geo-demographic data
+#    Then I should receive geo-demographic data
+#
+#  Scenario: Account usage increments
+#    Given a user a basic account has made X requests
+#    When the user issues the next request
+#    Then the user is shown a 402 error page
+#    And the page has a link to account management
 
 
 

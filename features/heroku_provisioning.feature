@@ -17,3 +17,9 @@ Feature: Provide heroku addon functionality
     When running the kensa plan change "planchange" with plan "premium"
     Then the test should run with no fails
     And the user should have only a "premium" plan associated
+
+  Scenario: Heroku SSO
+    Given an account
+    And a "basic" plan
+    When running the kensa sso test "sso"
+    Then the test should run with no fails

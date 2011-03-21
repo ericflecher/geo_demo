@@ -4,6 +4,7 @@ gem 'kensa'
 gem 'haml'
 gem 'rails'
 gem 'builder'
+gem 'geokit'
 
 # Bundle gems needed for Mongoid
 gem "mongoid", ">=2.0.0.rc.7"
@@ -29,9 +30,6 @@ group :test do
   gem 'spork'
   gem 'rspec'
   gem 'nokogiri'
-  gem 'firewatir'
-
-  
 end
 
 # Bundle gems for the local environment. Make sure to
