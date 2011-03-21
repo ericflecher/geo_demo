@@ -1,5 +1,7 @@
 GeoDemo::Application.routes.draw do
 
+  match "api/v1/demographics" => 'demogr#show'
+
   root :to => "home#index"
 
   devise_for :users

@@ -4,6 +4,7 @@ gem 'kensa'
 gem 'haml'
 gem 'rails'
 gem 'builder'
+gem 'geokit'
 
 # Bundle gems needed for Mongoid
 gem "mongoid", ">=2.0.0.rc.7"

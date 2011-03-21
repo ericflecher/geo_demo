@@ -43,7 +43,7 @@ class Heroku::ResourcesController < ApplicationController
       pre_token = params[:id] + ':' + GeoDemo::Application.config.heroku_salt + ':' + params[:timestamp]
       token = Digest::SHA1.hexdigest(pre_token).to_s
       if (token != params[:token] || params[:timestamp].to_i < (Time.now - 2*60).to_i)
-        render :nothing => true, :status => 403 
+        render :nothing => true, :status => 403
       end
   end
 
