@@ -1,11 +1,12 @@
 require 'heroku/kensa/http'
 require 'heroku/kensa/client'
+require 'heroku/kensa/check'
 
   Heroku::Kensa::HTTP.module_eval do
 
     def get(path, params={})
       path = "#{path}?" + params.map { |k, v| "#{k}=#{v}" }.join("&") unless params.empty?
-      @data[:session].get(path)
+      @data[:session].get(path, nil, {"CONTENT_TYPE" => "text/html"})
       get_code_and_body
     end
 
@@ -70,6 +71,40 @@ require 'heroku/kensa/client'
       end
       result
     end
-
   end
+
+    Heroku::Kensa::SsoCheck.class_eval do
+
+      def mechanize_get url
+        code, body = get(url, [])
+        return Mechanize::Page.new(URI.parse(url), data[:session].response, body, code, Mechanize.new), code
+      end
+
+      def agent
+        MockSSO.new(data[:session])
+      end
+
+      class MockSSO
+
+        def initialize(session)
+          temp_jar = session.instance_variable_get(:@integration_session).instance_variable_get(:@_mock_session).instance_variable_get(:@cookie_jar)
+          @cookie_jar = CookieJar.new(temp_jar)
+        end
+
+        def cookie_jar
+          @cookie_jar
+        end
+
+        class CookieJar
+          def initialize(cookie_jar)
+            @cookies = cookie_jar.instance_variable_get(:@cookies)
+          end
+
+          def cookies(blah)
+            @cookies
+          end
+        end
+      end
+
+    end
 

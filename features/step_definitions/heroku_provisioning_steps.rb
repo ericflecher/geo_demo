@@ -57,3 +57,9 @@ end
 And /^the user should have only a "([^"]*)" plan associated$/ do |plan_type|
   User.first.plan.type.should == "premium"
 end
+
+# SSO
+
+When /^running the kensa sso test "([^"]*)"$/ do |test_name|
+  @client = get_client([test_name, @user.id])
+end
