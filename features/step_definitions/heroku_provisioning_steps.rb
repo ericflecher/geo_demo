@@ -26,8 +26,7 @@ Given /^an account$/ do
 end
 
 And /^a "([^"]*)" plan$/ do |plan_type|
-  plan = Plan.create(:type => plan_type)
-  @user.plan = plan
+  @user.plan = Plan.new(:type => plan_type)
   @user.save!
 end
 
@@ -47,4 +46,20 @@ end
 
 def get_client(test_args)
   Heroku::Kensa::Client.new(test_args, {:filename => "addon-manifest.json", :session => self})
+end
+
+# Plan Change
+
+When /^running the kensa plan change "([^"]*)" with plan "([^"]*)"$/ do |test_name, plan_type|
+  @client = get_client([test_name, @user.id, plan_type])
+end
+
+And /^the user should have only a "([^"]*)" plan associated$/ do |plan_type|
+  User.first.plan.type.should == "premium"
+end
+
+# SSO
+
+When /^running the kensa sso test "([^"]*)"$/ do |test_name|
+  @client = get_client([test_name, @user.id])
 end

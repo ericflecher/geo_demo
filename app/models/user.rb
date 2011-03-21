@@ -10,5 +10,5 @@ class User
   validates_uniqueness_of :name, :email, :case_sensitive => false
   attr_accessible :name, :email, :password, :password_confirmation
 
-  references_one :plan, :dependent => :destroy
+  embeds_one :plan
 end

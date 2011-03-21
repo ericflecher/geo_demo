@@ -30,8 +30,6 @@ group :test do
   gem 'spork'
   gem 'rspec'
   gem 'nokogiri'
-  gem 'firewatir'
-  
 end
 
 # Bundle gems for the local environment. Make sure to
