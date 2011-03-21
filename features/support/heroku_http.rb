@@ -77,7 +77,7 @@ require 'heroku/kensa/check'
 
       def mechanize_get url
         code, body = get(url, [])
-        return Mechanize::Page.new(URI.parse(url), data[:session].response, body, code, Mechanize.new), code
+        return Mechanize::Page.new(URI.parse(url), data[:session].last_response.headers, body, code, Mechanize.new), code
       end
 
       def agent
@@ -87,7 +87,7 @@ require 'heroku/kensa/check'
       class MockSSO
 
         def initialize(session)
-          temp_jar = session.instance_variable_get(:@integration_session).instance_variable_get(:@_mock_session).instance_variable_get(:@cookie_jar)
+          temp_jar = session.current_session.instance_variable_get(:@rack_mock_session).cookie_jar
           @cookie_jar = CookieJar.new(temp_jar)
         end
 
@@ -134,7 +134,7 @@ require 'heroku/kensa/check'
     protected
 
     def get_code_and_body
-      [@data[:session].response.code.to_i, @data[:session].response.body]
+      [@data[:session].last_response.status.to_i, @data[:session].last_response.body]
     end
 
     def request_with_method(method, params)
