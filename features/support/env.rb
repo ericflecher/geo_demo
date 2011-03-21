@@ -34,7 +34,6 @@ Capybara.default_selector = :css
 # of your scenarios, as this makes it hard to discover errors in your application.
 ActionController::Base.allow_rescue = false
 
-
 # If you set this to true, each scenario will run in a database transaction.
 # You can still turn off transactions on a per-scenario basis, simply tagging 
 # a feature or scenario with the @no-txn tag. If you are using Capybara,
