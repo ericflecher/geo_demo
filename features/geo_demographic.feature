@@ -3,7 +3,9 @@ Feature: Find Geo-Demographic Information
   Users should be able to retrieve demographic information easily
 
   Scenario: Passing location IP
-    When I execute a request for geo-demographic data based on IP '10.13.135.34'
+    Given an authenticatable user with a "basic" plan
+    And geodemographic data in the database
+    When I execute a request for geo-demographic data based on IP "10.13.135.34"
     Then I should receive geo-demographic data
 
 #  Scenario: Find by IP Address

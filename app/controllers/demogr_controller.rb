@@ -2,6 +2,7 @@ require 'geokit'
 
 class DemogrController < ApplicationController
 
+  before_filter :authenticate_user!
 =begin
 GET  /1/api/demographics?parameters
 =end
@@ -19,9 +20,13 @@ results[7].formatted_address: "United States"
 =end
 
   def show
-    coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
-    location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode([coords.lat, coords.lng])
-    render :json => location.full_address
+    if user_signed_in?
+      coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
+      location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode([coords.lat, coords.lng])
+      render :json => location.full_address
+    else
+      render :nothing => 403
+    end
   end
 
 end
