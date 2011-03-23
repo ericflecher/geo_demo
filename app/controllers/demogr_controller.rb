@@ -21,15 +21,12 @@ results[7].formatted_address: "United States"
 =end
 
 
-  #Update our model
-    #add user authentication fields like api_key and secret
-  #Add a sessions controller to handle applciation authentication
-  #
-
   def show
-    coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
+    coords = Geokit::Geocoders::MultiGeocoder.geocode("45660")
     location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode([coords.lat, coords.lng])
     render :json => location.full_address
+
+    
   end
 
 end

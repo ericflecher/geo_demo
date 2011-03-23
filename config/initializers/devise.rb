@@ -102,6 +102,7 @@ Devise.setup do |config|
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
   config.token_authentication_key = :api_key
+  config.stateless_token = true
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
@@ -124,13 +125,13 @@ Devise.setup do |config|
   # access, but formats like :xml or :json, should return 401.
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists. Default is [:html]
-  # config.navigational_formats = [:html, :iphone]
+  config.navigational_formats = []
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not (yet) supported by Devise,
   # you can configure them inside the config.warden block. The example below
   # allows you to setup OAuth, using http://github.com/roman/warden_oauth
-  #
+
   # config.warden do |manager|
   #   manager.oauth(:twitter) do |twitter|
   #     twitter.consumer_secret = <YOUR CONSUMER SECRET>
