@@ -18,7 +18,7 @@ And /^geodemographic data in the database$/ do
 end
 
 When /^I execute a request for geo\-demographic data based on IP "([^"]*)"$/ do |ip_address|
-  get("/api/v1/demographics.json?ip=" + ip_address + "&auth_token=" + @user.authentication_token )
+  get("/api/v1/demographics.json?ip=" + ip_address + "&api_key=" + @user.authentication_token )
 end
 
 Then /^I should receive geo\-demographic data$/ do
