@@ -8,6 +8,7 @@ Given /^an authenticatable user with a "([^"]*)" plan$/ do |plan_type|
                        :email => "blah@blah.com",
                        :password => password,
                        :password_confirmation => password)
+  @user.authentication_token = ActiveSupport::SecureRandom.base64(20)
   @user.plan = Plan.new(:type => plan_type)
   @user.save!
 end
@@ -17,7 +18,7 @@ And /^geodemographic data in the database$/ do
 end
 
 When /^I execute a request for geo\-demographic data based on IP "([^"]*)"$/ do |ip_address|
-  get("/api/v1/demographics?ip=" + ip_address)
+  get("/api/v1/demographics.json?ip=" + ip_address + "&auth_token=" + @user.authentication_token )
 end
 
 Then /^I should receive geo\-demographic data$/ do
