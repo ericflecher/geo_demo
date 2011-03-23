@@ -4,7 +4,7 @@ require 'json'
 
 class DemogrController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :increment_api_count
   
 =begin
 GET  /api/v1/demographics?parameters
@@ -33,6 +33,16 @@ GET  /api/v1/demographics?parameters
     result = query.execute.to_a
 
     render :json => result
+  end
+
+  protected
+
+  def increment_api_count
+    if(current_user.api_requests.nil?)
+      current_user.api_requests = 0
+    end
+    current_user.api_requests += 1
+    current_user.save!
   end
 
 end

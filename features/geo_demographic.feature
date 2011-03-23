@@ -8,6 +8,12 @@ Feature: Find Geo-Demographic Information
     When I execute a request for geo-demographic data based on IP "76.190.225.221"
     Then I should receive geo-demographic data
 
+  Scenario: api count updates when a user makes a request
+    Given an authenticatable user with a "basic" plan
+    And geodemographic data in the database
+    When I execute a request for geo-demographic data based on IP "76.190.225.221"
+    Then the user should have their api_request incremented by one
+
 #  Scenario: Find by IP Address
 #    Given '10.13.135.34'
 #    When I restfully request geo-demographic data
