@@ -184,11 +184,13 @@ DEPENDENCIES
   factory_girl
   geokit
   haml
+  json
   kensa
   mongoid (>= 2.0.0.rc.7)
   nokogiri
   open4
   rails
+  rest-client
   rspec
   rspec-rails
   ruby-debug19
