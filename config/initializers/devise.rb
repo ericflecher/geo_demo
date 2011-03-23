@@ -101,7 +101,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  config.token_authentication_key = :auth_token
+  config.token_authentication_key = :api_key
   config.stateless_token = true
 
   # ==> Scopes configuration
