@@ -5,7 +5,7 @@ Feature: Find Geo-Demographic Information
   Scenario: Passing location IP
     Given an authenticatable user with a "basic" plan
     And geodemographic data in the database
-    When I execute a request for geo-demographic data based on IP "10.13.135.34"
+    When I execute a request for geo-demographic data based on IP "76.190.225.221"
     Then I should receive geo-demographic data
 
 #  Scenario: Find by IP Address
