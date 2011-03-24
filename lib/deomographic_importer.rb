@@ -21,10 +21,9 @@ module DeomographicImporter
       #region[titleArray[i]] = splitLine[i] if (i > 2)
         placeIntoHashTree(region, titleArray[i], splitLine[i]) if (i > 2)
       }
-      #prints the location name so we can see progress
-      puts region["Geography"]
       region.save
     end
+    puts "Import Complete"
   end
 
 
@@ -40,10 +39,9 @@ module DeomographicImporter
     node.gsub!("$", "-s-")
     if (hash[node].nil?)
       hash[node] = remainingLevels.empty? ? value : Hash.new
-      deeper(hash[node], remainingLevels, value) if !remainingLevels.empty?
     else
       hash[node] = value if remainingLevels.empty?
-      deeper(hash[node], remainingLevels, value) if !remainingLevels.empty?
     end
+    deeper(hash[node], remainingLevels, value) if !remainingLevels.empty?
   end
 end

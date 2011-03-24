@@ -11,7 +11,8 @@ GET  /api/v1/demographics?parameters
 =end
 
   def show
-    coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
+    coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip]) if !params[:id].nil?
+    coords = Geokit::LatLng.normalize(params[:ll]) if !params[:ll].nil?
     response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{coords.lat},#{coords.lng}&sensor=false"
 
     data = JSON.parse(response)
