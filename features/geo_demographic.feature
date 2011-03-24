@@ -8,6 +8,20 @@ Feature: Find Geo-Demographic Information
     When I execute a request for geo-demographic data based on IP "76.190.225.221"
     Then I should receive geo-demographic data
 
+
+#ACC - the above scenario is not working for me, once we get it fixed we need to move to this kind of structure:
+#  Scenario Outline: Requesting demographic data
+#    Given an authenticatable user with a "basic" plan
+#    And geodemographic data in the database
+#    When I execute a request for geo-demographic data based on <format> <data>
+#    Then I should receive geo-demographic data
+#
+#  Scenarios:
+#  | format | data                            |
+#  | ip     | 76.190.225.221                  |
+#  | ll     | 41.577899932861,81.193000793457 |
+
+
   Scenario: api count updates when a user makes a request
     Given an authenticatable user with a "basic" plan
     And geodemographic data in the database
