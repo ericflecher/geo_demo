@@ -24,9 +24,6 @@ When /^I execute a request for geo\-demographic data based on IP "([^"]*)"$/ do 
 end
 
 Then /^I should receive geo\-demographic data$/ do
-  # right now this is returning a 302 to redirect the user to sign in... this is not the way this should work.
-  # it is happening because of devise and I haven't figured out how to change it yet.
-  # TODO: make this work properly
   last_response.status.should == 200
 end
 
