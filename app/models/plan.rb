@@ -4,4 +4,5 @@ class Plan
 
   field :type
   field :limit
+  attr_accessible :type, :limit
 end

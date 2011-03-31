@@ -19,6 +19,12 @@
   <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Update" %></p>
+  
+  <p><%= radio_button_tag 'theme', 'basic', true %> Basic
+  
+  <p><%= radio_button_tag 'theme', 'paid', false %> Paid
+  
+  
 <% end %>
 
 <h3>Cancel my account</h3>

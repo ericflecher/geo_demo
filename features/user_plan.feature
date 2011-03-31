@@ -12,7 +12,9 @@ Feature: User membership plan
     Then at the end of the month the user should receive a summary of their account
 
   Scenario: User upgrades plan
-    Given a user has a basic account
-    When the user issues an upgrade request
+    Given I am a logged in user with a basic account
+    And I am on the edit account page
+    When I select the 'paid' plan
+    And I select the 'update' button
     Then the user's plan should be a premium account
     And the user's monthly plan summary should reflect those changes
