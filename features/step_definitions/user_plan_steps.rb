@@ -40,13 +40,40 @@ Given /^I am a logged in user with a basic account$/ do
   visit("/users/edit")
 end
 
+Given /^I am a logged in user with a premium account$/ do
+  @user = User.create! :name => 'Test User', :email => 'test@email.com', :password => 'abc123', :password_confirmation => 'abc123'
+  @user.plan = Plan.new :type => :paid, :limit => 1000
+  visit("/users/edit")
+end
+
+
 When /^I select the 'paid' plan$/ do
-  pending # express the regexp above with the code you wish you had
+  pending
+  #choose('paid_plan')
 end
 
 When /^I select the 'update' button$/ do
-  pending # express the regexp above with the code you wish you had
+  pending
+  #click_button('update')
 end
+
+Then /^I should have a premium plan$/ do
+  pending
+  #@user = User.citeria.id(@user.id)
+  #@user.plan.type.should = :paid
+end
+
+When /^I select the 'basic' plan$/ do
+  pending
+  #choose('basic_plan')
+end
+
+Then /^I should have a basic plan$/ do
+  pending
+  #@user = User.citeria.id(@user.id)
+  #@user.plan.type.should = :basic
+end
+
 
 
 

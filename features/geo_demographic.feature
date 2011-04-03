@@ -11,6 +11,7 @@ Feature: Find Geo-Demographic Information
   Scenarios:
   | format | data                            |
   | ip     | 76.190.225.221                  |
+  | ll     | 41.5, -81.1                     |
 
 
   Scenario: api count updates when a user makes a request

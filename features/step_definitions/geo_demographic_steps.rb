@@ -20,7 +20,8 @@ And /^geodemographic data in the database$/ do
 end
 
 When /^I execute a request for geo\-demographic data based on "([^"]*)" "([^"]*)"$/ do |format, location|
-  get("/api/v1/demographics.json?#{format}=#{location}&api_key=#{@user.authentication_token}" )
+  clean_location = CGI::escape(location)
+  get("/api/v1/demographics.json?#{format}=#{clean_location}&api_key=#{@user.authentication_token}" )
 end
 
 Then /^I should receive geo\-demographic data$/ do
