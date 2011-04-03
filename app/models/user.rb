@@ -9,13 +9,12 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   field :name
-  field :api_requests
   field :authentication_token
   field :secret
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :authentication_token, :secret, :api_requests
+  attr_accessible :name, :email, :password, :password_confirmation, :authentication_token, :secret
 
   embeds_one :plan
-
+  embeds_many :requests
 end

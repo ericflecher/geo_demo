@@ -4,7 +4,7 @@ require 'json'
 
 class DemogrController < ApplicationController
 
-  before_filter :authenticate_user!, :increment_api_count
+  before_filter :authenticate_user!
   
 =begin
 GET  /api/v1/demographics?parameters
@@ -32,17 +32,19 @@ GET  /api/v1/demographics?parameters
     query = DemographicRegion.where(:Geography => /^#{township}.*#{county}.*#{state}/)
 
     result = query.execute.to_a
-
+    increment_api_count params.to_s, "#{township}, #{county}, #{state}", result
     render :json => result
   end
 
   protected
 
-  def increment_api_count
-    if(current_user.api_requests.nil?)
-      current_user.api_requests = 0
-    end
-    current_user.api_requests += 1
+  def increment_api_count(query, location, response)
+    request = Request.new(
+        :query => query,
+        :location => location,
+        :response => response,
+        :date => Time.now.utc)
+    current_user.requests << request
     current_user.save!
   end
 

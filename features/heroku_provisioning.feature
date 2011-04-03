@@ -23,3 +23,4 @@ Feature: Provide heroku addon functionality
     And a "basic" plan
     When running the kensa sso test "sso"
     Then the test should run with no fails
+
