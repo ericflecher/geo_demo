@@ -16,5 +16,12 @@ Feature: User membership plan
     And I am on the edit account page
     When I select the 'paid' plan
     And I select the 'update' button
-    Then the user's plan should be a premium account
-    And the user's monthly plan summary should reflect those changes
+    Then I should have a premium plan
+    
+  Scenario: User upgrades plan
+    Given I am a logged in user with a premium account
+    And I am on the edit account page
+    When I select the 'basic' plan
+    And I select the 'update' button
+    Then I should have a basic plan
+

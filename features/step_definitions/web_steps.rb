@@ -17,9 +17,6 @@ end
 World(WithinHelpers)
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
-  puts "#####################"
-  puts page_name
-  puts path_to(page_name)
   visit path_to(page_name)
 end
 
