@@ -2,18 +2,6 @@ require 'net/http'
 require 'deomographic_importer'
 include DeomographicImporter
 
-Given /^an authenticatable user with a "([^"]*)" plan$/ do |plan_type|
-  password = ActiveSupport::SecureRandom.base64(10)
-  @user = User.create!(:name => "blah",
-                       :email => "blah@blah.com",
-                       :password => password,
-                       :password_confirmation => password)
-  @api_requests = 0
-  @user.authentication_token = ActiveSupport::SecureRandom.base64(20)
-  @user.plan = Plan.new(:type => plan_type)
-  @user.save!
-end
-
 And /^geodemographic data in the database$/ do
   importDemographicFile("all_Ohio/dc_acs_2009_5yr_g00__data1_lite.txt")
 end
