@@ -18,3 +18,12 @@ end
 Then /^the user should have their api_request incremented by one$/ do
   User.first(:conditions => {:id => @user.id}).requests.count.should == (@api_requests + 1)
 end
+
+When /^I execute a bad request for geo\-demographic data$/ do
+  get("/api/v1/demographics.json?api_key=#{@user.authentication_token}" )
+end
+
+Then /^I should receive a status (\d+) message$/ do |arg1|
+  last_response.status.should == 400
+end
+

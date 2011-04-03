@@ -11,10 +11,22 @@ GET  /api/v1/demographics?parameters
 =end
 
   def show
-    coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip]) if !params[:ip].nil? && params[:ll].nil?
-    coords = Geokit::LatLng.normalize(params[:ll]) if !params[:ll].nil?
-    response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{coords.lat},#{coords.lng}&sensor=false"
-
+  
+    case true
+        when !params[:ll].nil?
+            coords = Geokit::LatLng.normalize(params[:ll])
+            response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{coords.lat},#{coords.lng}&sensor=false"
+        when !params[:address].nil?
+            clean_location = CGI::escape(params[:address])
+            response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?address=#{clean_location}&sensor=false"
+        when !params[:ip].nil?
+            coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
+            response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{coords.lat},#{coords.lng}&sensor=false"
+        else
+            #location not specified
+            #render :new, :status => :bad_request
+    end
+        
     data = JSON.parse(response)
 
     township, county, state = ""
