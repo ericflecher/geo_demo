@@ -23,8 +23,8 @@ GET  /api/v1/demographics?parameters
             coords = Geokit::Geocoders::MultiGeocoder.geocode(params[:ip])
             response = RestClient.get "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{coords.lat},#{coords.lng}&sensor=false"
         else
-            #location not specified
-            #render :new, :status => :bad_request
+            render :json => "Missing criteria", :status => :bad_request
+            return
     end
         
     data = JSON.parse(response)
