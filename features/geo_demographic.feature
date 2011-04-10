@@ -26,9 +26,10 @@ Feature: Find Geo-Demographic Information
     When I execute a request for geo-demographic data based on "ip" "76.190.225.221"
     Then the user should have their api_request incremented by one
 
-
-#todo add in seed for testing based on the ohio file in project
-
-#todo: we should be getting back data that looks like ???
-
-#todo: for bonus add in the client specification for columns
+  Scenario: Requesting specific demographic data
+    Given an authenticatable user with a "basic" plan
+    And geodemographic data in the database
+    And I have specified specific demographic variables I am interested in
+    When I execute a request for geo-demographic data based on "address" "Bratton township, Adams County, Ohio" with a filter
+    Then I should receive geo-demographic data
+    And I should only receive the demographic variables I requested

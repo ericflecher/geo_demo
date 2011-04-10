@@ -11,7 +11,9 @@ GET  /api/v1/demographics?parameters
 =end
 
   def show
-  
+
+    # Accept query parameters
+
     case true
         when !params[:ll].nil?
             coords = Geokit::LatLng.normalize(params[:ll])
@@ -54,7 +56,6 @@ GET  /api/v1/demographics?parameters
     request = Request.new(
         :query => query,
         :location => location,
-        :response => response,
         :date => Time.now.utc)
     current_user.requests << request
     current_user.save!
