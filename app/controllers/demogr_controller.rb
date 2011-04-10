@@ -45,7 +45,7 @@ GET  /api/v1/demographics?parameters
 
     query = DemographicRegion.where(:Geography => /^#{township}.*#{county}.*#{state}/)
 
-    result = query.execute.to_a
+    result = query.first
     increment_api_count params.to_s, "#{township}, #{county}, #{state}", result
     render :json => result
   end
