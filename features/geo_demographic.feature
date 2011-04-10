@@ -11,8 +11,8 @@ Feature: Find Geo-Demographic Information
   Scenarios:
   | format | data                            |
   | ip     | 75.39.84.107                  |
-  | ll     | 41.5, -81.1                     |
-  |address | twinsburg, oh                   |
+  | ll     | 41.3661111, -81.8544444                     |
+  |address | berea, oh                   |
   
   Scenario: Requesting demographic data
     Given an authenticatable user with a "basic" plan
@@ -30,6 +30,6 @@ Feature: Find Geo-Demographic Information
     Given an authenticatable user with a "basic" plan
     And geodemographic data in the database
     And I have specified specific demographic variables I am interested in
-    When I execute a request for geo-demographic data based on "address" "Bratton township, Adams County, Ohio" with a filter
+    When I execute a request for geo-demographic data based on "address" "Berea city, Cuyahoga county, Ohio" with a filter
     Then I should receive geo-demographic data
     And I should only receive the demographic variables I requested
