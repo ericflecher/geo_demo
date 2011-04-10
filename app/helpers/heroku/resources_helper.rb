@@ -1,2 +1,3 @@
 module Heroku::ResourcesHelper
+
 end

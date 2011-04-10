@@ -10,7 +10,7 @@ Feature: Find Geo-Demographic Information
 
   Scenarios:
   | format | data                            |
-  | ip     | 76.190.225.221                  |
+  | ip     | 75.39.84.107                  |
   | ll     | 41.5, -81.1                     |
   |address | twinsburg, oh                   |
   
@@ -23,7 +23,7 @@ Feature: Find Geo-Demographic Information
   Scenario: api count updates when a user makes a request
     Given an authenticatable user with a "basic" plan
     And geodemographic data in the database
-    When I execute a request for geo-demographic data based on "ip" "76.190.225.221"
+    When I execute a request for geo-demographic data based on "ip" "75.39.84.107"
     Then the user should have their api_request incremented by one
 
 

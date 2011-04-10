@@ -11,7 +11,6 @@ GET  /api/v1/demographics?parameters
 =end
 
   def show
-  
     case true
         when !params[:ll].nil?
             coords = Geokit::LatLng.normalize(params[:ll])
@@ -26,7 +25,7 @@ GET  /api/v1/demographics?parameters
             render :json => "Missing criteria", :status => :bad_request
             return
     end
-        
+
     data = JSON.parse(response)
 
     township, county, state = ""
@@ -45,7 +44,7 @@ GET  /api/v1/demographics?parameters
 
     result = query.execute.to_a
     increment_api_count params.to_s, "#{township}, #{county}, #{state}", result
-    render :json => result
+    render :json => result || ""
   end
 
   protected

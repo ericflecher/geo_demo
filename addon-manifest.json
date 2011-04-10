@@ -4,7 +4,7 @@
     "config_vars": [ "ABSTRACTIDENTITY_USERNAME", "ABSTRACTIDENTITY_PASSWORD" ],
     "password": "4wcRVpdZtcfyGTEJ",
     "sso_salt": "1p3O0Wm5p3d1kkZ1",
-    "production": "http://abstractidentity.heroku.com/",
+    "production": "https://abstractidentity.heroku.com/",
     "test": "http://localhost:3000/"
   }
 }

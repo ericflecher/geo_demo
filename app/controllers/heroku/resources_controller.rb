@@ -27,7 +27,7 @@ class Heroku::ResourcesController < ApplicationController
   end
 
   def destroy
-    User.first(:conditions => {:id => params[:id]}).plan.delete
+    get_user_by_id(params[:id]).plan.delete
     render :json => "successful removal of service: " + params[:id]
   end
 
@@ -36,6 +36,7 @@ class Heroku::ResourcesController < ApplicationController
     session[:heroku_sso] = true
     cookies["heroku-nav-data"] = {:value => params['nav-data']}
     @heroku_nav = open('http://nav.heroku.com/v1/providers/header').read
+    @user = get_user_by_id params[:id]
     render :template => 'heroku/resources/show'
   end
 
