@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 # If you are deploying to Heroku and MongoHQ,
-# you supply connection information here.
+# you supply connection information here
 require 'uri'
 if ENV['MONGOHQ_URL']
   mongo_uri = URI.parse(ENV['MONGOHQ_URL'])
